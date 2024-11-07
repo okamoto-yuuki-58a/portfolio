@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: ["bin/rails", "server", "-b", "0.0.0.0"]
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - .:/portfolio
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
