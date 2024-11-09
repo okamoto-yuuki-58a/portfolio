@@ -13,3 +13,124 @@
  *= require_tree .
  *= require_self
  */
+/* ベーススタイル */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* ヘッダー */
+  .header {
+    background-color: #333;
+    padding: 1rem;
+    color: white;
+  }
+  
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo-text {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .button {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+  
+  /* メインコンテンツ */
+  main {
+    flex: 1;
+  }
+  
+  .hero-section {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    min-height: calc(100vh - 120px);
+    padding: 2rem;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .main-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .app-description {
+    margin: 2rem 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .airplane-image, .map-image {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+  }
+  
+  /* フッター */
+  .footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .footer-links a {
+    margin: 0 10px;
+    color: white;
+  }
+  
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 2rem;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+    }
+    
+    .app-description {
+      font-size: 1rem;
+    }
+    
+    .hero-section {
+      padding: 1rem;
+    }
+  }

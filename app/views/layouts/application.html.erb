@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Portfolio</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TravelSync - 旅をもっと手軽に</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <%= link_to 'TravelSync', root_path, class: 'logo-text' %>
+        </div>
+        <nav class="nav-menu">
+          <%= link_to 'ログイン', '#', class: 'button' %>
+          <%= link_to 'ログアウト', '#', class: 'button' %>
+          <%= link_to 'マイページ', '#', class: 'button' %>
+          <%= link_to 'プラン一覧', '#', class: 'button' %>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-links">
+          <%= link_to '利用規約', '#' %>
+          <%= link_to 'プライバシーポリシー', '#' %>
+          <%= link_to 'お問い合わせ', '#' %>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
