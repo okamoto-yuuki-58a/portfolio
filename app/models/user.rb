@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :plans
+
   attr_accessor :password, :password_confirmation, :terms_of_service, :privacy_policy
 
   validates :username, presence: true, length: { minimum: 2, maximum: 50 }
