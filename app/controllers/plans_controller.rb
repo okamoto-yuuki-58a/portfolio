@@ -1,6 +1,11 @@
 class PlansController < ApplicationController
   before_action :require_login
 
+  def index
+    @q = current_user.plans.ransack(params[:q])
+    @plans = @q.result(distinct: true).order(updated_at: :desc)
+  end
+
   def new
     @plan = Plan.new
   end

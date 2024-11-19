@@ -1,0 +1,57 @@
+<div class="plans-container">
+  <h1>プラン一覧</h1>
+
+  <div class="plans-actions">
+    <%= link_to 'プラン作成', new_plan_path, class: 'action-button' %>
+    <%= link_to 'プランに参加する', '#', class: 'action-button secondary' %>
+  </div>
+
+  <div class="search-section">
+  <%= search_form_for @q, url: plans_path, class: 'search-form' do |f| %>
+    <div class="search-inputs">
+      <%= f.search_field :name_or_prefecture_cont, placeholder: '検索', class: 'search-input' %>
+      <%= f.select :prefecture_eq, 
+          [
+            ['北海道', '北海道'], ['青森県', '青森県'], ['岩手県', '岩手県'],
+            # ... 他の都道府県 ...
+            ['沖縄県', '沖縄県']
+          ],
+          { include_blank: '都道府県' },
+          { class: 'prefecture-select' }
+      %>
+      <%= f.submit '検索', class: 'search-button' %>
+    </div>
+  <% end %>
+</div>
+
+  <div class="plans-grid">
+    <% if @plans.any? %>
+      <% @plans.each do |plan| %>
+        <div class="plan-card">
+          <h3 class="plan-title"><%= plan.name %></h3>
+          <div class="plan-details">
+            <p class="travel-dates">
+              旅行日 <%= plan.start_date.strftime('%m/%d') %>〜<%= plan.end_date.strftime('%m/%d') %>
+            </p>
+            <p class="edit-date">
+              編集日 <%= plan.updated_at.strftime('%m/%d') %>
+            </p>
+          </div>
+          <div class="plan-actions">
+            <%= link_to '#', class: 'action-link' do %>
+              <i class="fa fa-twitter"></i>
+            <% end %>
+            <%= link_to '#', class: 'action-link' do %>
+              アルバム
+            <% end %>
+            <%= link_to '#', class: 'action-link' do %>
+              プラン
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-plans-message">プランがありません。新しいプランを作成してください。</p>
+    <% end %>
+  </div>
+</div>
