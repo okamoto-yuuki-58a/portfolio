@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
@@ -17,10 +18,14 @@
           <%= link_to 'TravelSync', root_path, class: 'logo-text' %>
         </div>
         <nav class="nav-menu">
-          <%= link_to 'ログイン', login_path, class: 'button' %>
-          <%= link_to 'ログアウト', logout_path, class: 'button' %>
-          <%= link_to 'マイページ', '#', class: 'button' %>
-          <%= link_to 'プラン一覧', plans_path, class: 'button' %>
+          <% if logged_in? %>
+            <%= link_to 'ログアウト', logout_path, method: :delete, class: 'button' %>
+            <%= link_to 'マイページ', '#', class: 'button' %>
+            <%= link_to 'プラン一覧', plans_path, class: 'button' %>
+          <% else %>
+            <%= link_to 'ログイン', login_path, class: 'button' %>
+            <%= link_to '新規登録', signup_path, class: 'button' %>
+          <% end %>
         </nav>
       </div>
     </header>
