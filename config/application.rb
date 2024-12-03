@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require 'dotenv/load'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -18,5 +19,8 @@ module Portfolio
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    # Google Maps APIキーを設定
+    config.google_maps_api_key = ENV['GOOGLE_MAPS_API_KEY']
   end
 end

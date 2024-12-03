@@ -28,7 +28,7 @@
     <% if @plans.any? %>
       <% @plans.each do |plan| %>
         <div class="plan-card">
-          <h3 class="plan-title"><%= plan.name %></h3>
+          <h3 class="plan-title"><%= link_to plan.name, edit_plan_path(plan) %></h3>
           <div class="plan-details">
             <p class="travel-dates">
               旅行日 <%= plan.start_date.strftime('%m/%d') %>〜<%= plan.end_date.strftime('%m/%d') %>

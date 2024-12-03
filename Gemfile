@@ -74,3 +74,7 @@ end
 gem 'sorcery', '~> 0.16.5'
 
 gem 'ransack'
+
+gem 'dotenv-rails'
+
+gem 'acts_as_list'
