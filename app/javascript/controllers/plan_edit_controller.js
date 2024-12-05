@@ -9,6 +9,7 @@ export default class extends Controller {
     this.initSearchBox()
     this.initSortable()
     this.spots = []
+    this.markers = new Map()
   }
 
   initMap() {
@@ -66,17 +67,27 @@ export default class extends Controller {
   }
 
   addMarker(spot) {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: { lat: spot.lat, lng: spot.lng },
       map: this.map,
       title: spot.name
     })
+    this.markers.set(spot.id, marker)
   }
 
   removeSpot(event) {
     const spotId = event.currentTarget.dataset.spotId
     this.spots = this.spots.filter(spot => spot.id !== spotId)
     this.updateSpotsList()
+    this.removeMarker(spotId)
+  }
+
+  removeMarker(spotId) {
+    const marker = this.markers.get(spotId)
+    if (marker) {
+      marker.setMap(null)
+      this.markers.delete(spotId)
+    }
   }
 
   updateSpotsList() {
