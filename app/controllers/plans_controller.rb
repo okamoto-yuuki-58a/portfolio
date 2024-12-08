@@ -27,9 +27,15 @@ class PlansController < ApplicationController
 
   def update
     if @plan.update(plan_params)
-      redirect_to @plan, notice: 'プランが更新されました。'
+      respond_to do |format|
+        format.html { redirect_to @plan, notice: 'プランが更新されました。' }
+        format.json { render json: { status: 'success', message: 'プランが正常に保存されました' }, status: :ok }
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: { status: 'error', message: @plan.errors.full_messages }, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -41,6 +47,6 @@ class PlansController < ApplicationController
 
   def plan_params
     params.require(:plan).permit(:name, :prefecture, :start_date, :end_date,
-                                 spot_lists_attributes: [:id, :name, :address, :latitude, :longitude, :position, :_destroy])
+                                 spot_lists_attributes: [:id, :name, :latitude, :longitude, :_destroy])
   end
 end

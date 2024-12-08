@@ -1,4 +1,4 @@
-<div data-controller="plan-edit">
+<div data-controller="plan-edit" data-plan-id="<%= @plan.id %>">
   <div class="grid grid-cols-[1fr,400px] h-screen">
     <div class="relative">
       <div data-plan-edit-target="map" style="width: 100%; height: calc(100vh - 64px);"></div>
@@ -15,7 +15,7 @@
       <div class="flex gap-2 mt-4">
         <button class="flex-1 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded">ルート作成</button>
         <button class="flex-1 bg-gray-200 hover:bg-gray-300 p-2 rounded">チャット</button>
-        <button class="flex-1 bg-green-500 hover:bg-green-600 text-white p-2 rounded">保存</button>
+        <button data-action="click->plan-edit#savePlan" class="flex-1 bg-green-500 hover:bg-green-600 text-white p-2 rounded">保存</button>
       </div>
     </div>
   </div>

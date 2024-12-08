@@ -1,0 +1,34 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        username: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        terms_of_service: "利用規約"
+        privacy_policy: "プライバシーポリシー"
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank: "を入力してください"
+              too_short: "は%{count}文字以上で入力してください"
+              too_long: "は%{count}文字以内で入力してください"
+            email:
+              blank: "を入力してください"
+              taken: "はすでに使用されています"
+            password:
+              blank: "を入力してください"
+              too_short: "は%{count}文字以上で入力してください"
+            password_confirmation:
+              blank: "を入力してください"
+              confirmation: "とパスワードの入力が一致しません"
+            terms_of_service:
+              accepted: "に同意してください"
+            privacy_policy:
+              accepted: "に同意してください"
+  errors:
+    messages:
+      accepted: "に同意してください"
