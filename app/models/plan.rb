@@ -10,6 +10,8 @@ class Plan < ApplicationRecord
 
   accepts_nested_attributes_for :spot_lists, allow_destroy: true, reject_if: :all_blank
 
+  before_save :assign_positions_to_spot_lists
+
   def self.ransackable_attributes(auth_object = nil)
     ["name", "prefecture", "start_date", "end_date"]
   end
@@ -25,6 +27,12 @@ class Plan < ApplicationRecord
 
     if end_date < start_date
       errors.add(:end_date, "は開始日より後の日付を選択してください")
+    end
+  end
+
+  def assign_positions_to_spot_lists
+    spot_lists.each_with_index do |spot, index|
+      spot.position = index + 1
     end
   end
 end

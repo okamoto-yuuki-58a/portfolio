@@ -59,7 +59,7 @@ body {
   }
   
   .hero-section {
-    background: linear-gradient(135deg, #ffd700, #ffa500);
+    background: linear-gradient(135deg, white, white);
     min-height: calc(100vh - 120px);
     padding: 2rem;
   }
@@ -133,4 +133,24 @@ body {
     .hero-section {
       padding: 1rem;
     }
+  }
+
+  .error-messages {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875em;
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .field_with_errors input {
+    border-color: #dc3545;
   }

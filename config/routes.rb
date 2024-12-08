@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
 
   resources :plans, only: [:new, :create, :index, :edit, :update]
+
+  resources :plans do
+    resources :spot_lists, only: [:index]
+  end
 end
