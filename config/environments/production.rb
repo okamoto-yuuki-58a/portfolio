@@ -91,8 +91,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # Renderのドメインを許可するホストとして追加
-  config.hosts << "portfolio-vgy6.onrender.com"
-  # すべてのサブドメインを許可する場合は以下を使用
-  # config.hosts << ".onrender.com"
+  # 環境変数からホスト名を設定
+  if ENV['RENDER_EXTERNAL_HOSTNAME'].present?
+    config.hosts << ENV['RENDER_EXTERNAL_HOSTNAME']
+  end
 end
