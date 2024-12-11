@@ -1,0 +1,25 @@
+databases:
+  - name: travelsync_production
+    databaseName: travelsync_production
+    user: travelsync
+    plan: free
+
+services:
+  - type: web
+    name: travelsync
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: travelsync_production
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+    healthCheckPath: /
+    disk:
+      name: travelsync-uploads
+      mountPath: /opt/travelsync/public/uploads
+      sizeGB: 1
